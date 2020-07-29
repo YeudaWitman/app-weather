@@ -17,22 +17,16 @@ const useStyles = makeStyles((theme) => ({
 const WeatherCardHeader = props => {
   const {Temperature} = props.data;
   const {Value} = Temperature.Metric
-
-  const data = {
-    LocalizedName: 'Tel Aviv',
-    Country: {
-      LocalizedName: 'Israel'
-    }
-  };
-  
+  const {city} = props;
+ 
   const classes = useStyles();
   const celsiusSymbol = '℃';
   
   return (
     <CardHeader 
     avatar={<Avatar alt="Remy Sharp" src="" className={classes.large}>SUN</Avatar>}
-    action={<FavoriteButton city={data} />}
-    title={<CityTitle title={data} />}
+    action={<FavoriteButton city={city} />}
+    title={<CityTitle title={city} />}
     subheader={<Typography color="textSecondary">{Value} {celsiusSymbol}</Typography>} 
     />
   )

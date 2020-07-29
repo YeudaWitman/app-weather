@@ -2,6 +2,8 @@ export const DARK_MODE = "DARK_MODE";
 export const OPEN_TOAST = "OPEN_TOAST";
 export const CLOSE_TOAST = "CLOSE_TOAST";
 
+export const SET_CURRENT_CITY = "SET_CURRENT_CITY";
+
 export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES";
 export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES";
 

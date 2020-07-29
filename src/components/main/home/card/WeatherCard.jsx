@@ -8,20 +8,23 @@ import WeatherCardContent from './WeatherCardContent.jsx';
 import WeatherCardHeader from './WeatherCardHeader.jsx';
 import * as actions from '../../../../redux/actions';
 
-const API_KEY = process.env.API_KEY;;
+const API_KEY = process.env.REACT_APP_API_KEY;
 const CURRENT_DEVELOP_API = 'https://my-json-server.typicode.com/YeudaWitman/currentCondition/data';
 
 const WeatherCard = ({cityKey}) => {
 
-  const CURRENT_CONDITION_API = `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}`;
-  
-  const currentState = useSelector(state => state.currentData);
-  const currentData  = currentState.data;
+  const currentData = useSelector(state => state.currentCity);
+  const data = currentData.data[0];
+  const currentCity = useSelector(state => state.currentCity.city);
+
   const dispatch = useDispatch();
   let lastUpdate = moment().format("ddd, h:mA");
+  console.log(currentCity);
+  const CURRENT_CONDITION_API = `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}`;
 
   useEffect(() => {
     const fetchCurrentWeather = () => {
+      console.log('fetch data:', currentData);
       dispatch(actions.fetchDataPending());
       axios.get(CURRENT_DEVELOP_API)
       .then((response) => {
@@ -32,9 +35,9 @@ const WeatherCard = ({cityKey}) => {
       })
     }
     fetchCurrentWeather();
-  }, [dispatch]);
+  }, [currentCity]);
 
-  if(currentState.pending) {
+  if(currentData.pending) {
     return (
       <LinearProgress />
     )
@@ -42,12 +45,12 @@ const WeatherCard = ({cityKey}) => {
     return (
       <Container>
         <Card>
-          <WeatherCardHeader data={currentData} />
-          <WeatherCardContent title={currentData.WeatherText} />
+          <WeatherCardHeader data={data} city={currentCity} />
+          <WeatherCardContent title={data.WeatherText} />
           <CardActions>
           <Grid container justify="center" alignItems="center" item xs={12}>
             <Typography variant="subtitle1" color="textSecondary">
-              Last update: {lastUpdate}
+              Last update: {lastUpdate} [{cityKey}]{currentCity.key}
             </Typography>
           </Grid>
           </CardActions>

@@ -6,6 +6,7 @@ import { LinearProgress, Grid, Popper, InputBase, Icon, List } from '@material-u
 
 import SuggestionsList from './SuggestionsList.jsx';
 import useStyles from './style';
+import { Redirect } from 'react-router-dom';
 
 const AUTOCOMPLETE_API = 'https://my-json-server.typicode.com/YeudaWitman/autoCompleteMock/data';
 
@@ -37,7 +38,13 @@ const SearchField = () => {
     })
   }
 
-  const handleCloseList = () => {
+  const handleCloseList = (city) => {
+    const selected = {
+      key: city.Key,
+      name: city.LocalizedName,
+      country: city.Country.LocalizedName
+    }
+    dispatch(actions.setCurrentCity(selected));
     dispatch(actions.closeSuggestionMenu(null));
     dispatch(actions.search(''));
   }

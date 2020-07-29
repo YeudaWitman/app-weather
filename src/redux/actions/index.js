@@ -20,6 +20,13 @@ export const closeToast = () => {
   }
 }
 
+export const setCurrentCity = (payload) => {
+  return {
+    type: types.SET_CURRENT_CITY,
+    payload
+  }
+}
+
 export const addToFavorites = (payload) => {
   return {
     type: types.ADD_TO_FAVORITES,

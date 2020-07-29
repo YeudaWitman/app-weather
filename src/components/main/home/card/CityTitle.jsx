@@ -8,10 +8,10 @@ const CityTitle = props => {
   return (
     <>
       <Typography variant="h4" component="span">
-        {title.LocalizedName},{' '}
+        {title.name},{' '}
       </Typography>
       <Typography variant="subtitle1" component="span" >
-        {title.Country.LocalizedName}
+        {title.country}
       </Typography>
     </>
   )

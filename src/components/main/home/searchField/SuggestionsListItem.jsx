@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const SuggestionsListItem = ({city, handleClose}) => {
   const {Country} = city;
   return (
-    <ListItem button onClick={handleClose} component={NavLink} to={`/${city.Key}`} >
+    <ListItem button onClick={() => handleClose(city)} component={NavLink} to={`/${city.Key}`} >
       {city.LocalizedName}, {Country.LocalizedName}
     </ListItem>
   )
