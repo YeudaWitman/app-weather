@@ -1,13 +1,29 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Box, Button, Icon } from '@material-ui/core';
+import { FAVORITES } from '../../../../common';
 
-import { Box, Button, Icon} from '@material-ui/core';
+import * as actions from '../../../../redux/actions';
 
-const FavoriteButton = ({city}) => {
+const FavoriteButton = ({ city }) => {
+
+  const dispatch = useDispatch();
+  const favList = useSelector(state => state.favorites);
+
+  const isFavorite = favList.find(favCity => favCity.key === city.key);
 
   const handleAddToFavorites = () => {
-    console.log(city);
+    let tmp = [];
+    if (localStorage.getItem(FAVORITES)) {
+      tmp = JSON.parse(localStorage.getItem(FAVORITES));
+    }
+    console.log(tmp);
+    tmp.push(city);
+    console.log(tmp);
+    dispatch(actions.addToFavorites(tmp));
+    localStorage.setItem(FAVORITES, JSON.stringify(tmp));
   }
-  
+
   const handleRemoveFromFavorites = () => {
     console.log(city);
   }
@@ -26,13 +42,13 @@ const FavoriteButton = ({city}) => {
       handle: handleRemoveFromFavorites
     }
   };
-  
-  const fav = 'remove';
+
+  const fav = isFavorite ? 'remove' : 'add';
 
   return (
     <Box display="flex" padding={2}>
-        <Icon fontSize="large" color={opt[fav].color}>{opt[fav].icon}</Icon>
-        <Button color="inherit" onClick={opt[fav].handle}>{opt[fav].text}</Button>
+      <Icon fontSize="large" color={opt[fav].color}>{opt[fav].icon}</Icon>
+      <Button color="inherit" onClick={opt[fav].handle}>{opt[fav].text}</Button>
     </Box>
   );
 }

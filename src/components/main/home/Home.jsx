@@ -11,37 +11,34 @@ import * as actions from '../../../redux/actions';
 const API_KEY = process.env.REACT_APP_API_KEY;
 const CURRENT_DEVELOP_API = 'https://my-json-server.typicode.com/YeudaWitman/currentCondition/data';
 
-const Home = ({match}) => {
-  const cityKey = match.params.key ? match.params.key: '215854';
-
-  const currentData = useSelector(state => state.currentCity);
-  const data = currentData.data[0];
-  const currentCity = useSelector(state => state.currentCity.city);
+const Home = ({ match }) => {
+  const { currentCity } = useSelector(state => state);
+  const data = currentCity.data[0];
+  const { city } = currentCity;
 
   const dispatch = useDispatch();
-  let lastUpdate = moment().format("ddd, h:mA");
-  //console.log(currentCity);
+  const lastUpdate = moment().format("ddd, h:mA");
+  const cityKey = match.params.key ? match.params.key : '215854';
   const CURRENT_CONDITION_API = `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}`;
 
   useEffect(() => {
     const fetchCurrentWeather = () => {
-      console.log('fetch data:', currentData);
       dispatch(actions.fetchDataPending());
       axios.get(CURRENT_DEVELOP_API)
-      .then((response) => {
-        dispatch(actions.fetchDataSuccess(response.data));
-      })
-      .catch((error) => {
-        dispatch(actions.fetchDataError(error));
-      })
+        .then((response) => {
+          dispatch(actions.fetchDataSuccess(response.data));
+        })
+        .catch((error) => {
+          dispatch(actions.fetchDataError(error));
+        })
     }
 
     fetchCurrentWeather();
-  }, [currentCity]);
+  }, [city]);
 
 
-  
-  if(currentData.pending) {
+
+  if (currentCity.pending) {
     return (
       <LinearProgress />
     )
@@ -49,14 +46,14 @@ const Home = ({match}) => {
     return (
       <Container>
         <Card>
-          <WeatherCardHeader data={data} city={currentCity} />
-          <WeatherCardContent title={data.WeatherText} />
+          <WeatherCardHeader data={data} city={city} />
+          <WeatherCardContent title={city.WeatherText} />
           <CardActions>
-          <Grid container justify="center" alignItems="center" item xs={12}>
-            <Typography variant="subtitle1" color="textSecondary">
-              Last update: {lastUpdate} [{cityKey}]{currentCity.key}
-            </Typography>
-          </Grid>
+            <Grid container justify="center" alignItems="center" item xs={12}>
+              <Typography variant="subtitle1" color="textSecondary">
+                Last update: {lastUpdate} [{cityKey}]{city.key}
+              </Typography>
+            </Grid>
           </CardActions>
         </Card>
       </Container>

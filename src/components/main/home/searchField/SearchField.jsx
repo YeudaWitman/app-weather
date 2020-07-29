@@ -14,6 +14,7 @@ const SearchField = () => {
   const dispatch = useDispatch();
 
   let { pending, suggestions } = useSelector(state => state.suggestion);
+  let { query } = useSelector(state => state.search);
   let anchorEl = useSelector(state => state.suggestionMenu.anchorEl);
 
   const open = Boolean(anchorEl);
@@ -62,6 +63,7 @@ const SearchField = () => {
           }}
           inputProps={{ 'aria-label': 'search' }}
           onChange={handleSearch}
+          value={query}
         />
       </div>
       <Popper open={open} anchorEl={anchorEl}>

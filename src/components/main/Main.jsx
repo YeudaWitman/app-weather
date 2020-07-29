@@ -9,6 +9,7 @@ import SearchField from './home/searchField/SearchField.jsx';
 
 
 const Main = () => {
+
   return (
     <Container maxWidth="lg">
       <SearchField />

@@ -4,16 +4,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MuiThemeProvider } from "@material-ui/core/styles";
 
 import * as actions from '../redux/actions';
+import { DARK_MODE, FAVORITES } from '../common'
 import themes from '../common/themes';
 
-const Theme = ({ children })  => {
-
+const Theme = ({ children }) => {
+  const isDarkMode = useSelector(state => state.darkMode);
   const dispatch = useDispatch();
 
   const checkLocalStorage = () => {
-    if(localStorage.getItem('dark-mode')) {
-      let darkMode = JSON.parse(localStorage.getItem('dark-mode'));
+    if (localStorage.getItem(DARK_MODE)) {
+      let darkMode = JSON.parse(localStorage.getItem(DARK_MODE));
       dispatch(actions.darkMode(darkMode));
+    }
+    if (localStorage.getItem(FAVORITES)) {
+      let favorites = JSON.parse(localStorage.getItem(FAVORITES));
+      console.log(favorites);
+      dispatch(actions.darkMode(favorites));
     }
   }
 
@@ -21,12 +27,12 @@ const Theme = ({ children })  => {
     checkLocalStorage();
   });
 
-  const isDarkMode = useSelector(state => state.darkMode);
+
   return (
-    <MuiThemeProvider children={children} 
+    <MuiThemeProvider children={children}
       theme={isDarkMode ? themes.themeDark : themes.themeLight}>
     </MuiThemeProvider>
-    );
+  );
 }
 
 export default Theme;
