@@ -6,7 +6,6 @@ import { LinearProgress, Grid, Popper, InputBase, Icon, List } from '@material-u
 
 import SuggestionsList from './SuggestionsList.jsx';
 import useStyles from './style';
-import { Redirect } from 'react-router-dom';
 
 const AUTOCOMPLETE_API = 'https://my-json-server.typicode.com/YeudaWitman/autoCompleteMock/data';
 

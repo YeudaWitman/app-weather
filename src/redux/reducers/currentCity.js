@@ -12,12 +12,11 @@ const initState = {
 }
 
 const currentCity = (state = initState, action) => {
-    
   switch (action.type) {
     case types.SET_CURRENT_CITY:
         return {
-          city: action.payload,
           ...state,
+          city: action.payload,
         };
     case types.FETCH_DATA_PENDING:
         return {

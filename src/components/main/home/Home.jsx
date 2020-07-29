@@ -20,7 +20,7 @@ const Home = ({match}) => {
 
   const dispatch = useDispatch();
   let lastUpdate = moment().format("ddd, h:mA");
-  console.log(currentCity);
+  //console.log(currentCity);
   const CURRENT_CONDITION_API = `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}`;
 
   useEffect(() => {
@@ -35,9 +35,12 @@ const Home = ({match}) => {
         dispatch(actions.fetchDataError(error));
       })
     }
+
     fetchCurrentWeather();
   }, [currentCity]);
 
+
+  
   if(currentData.pending) {
     return (
       <LinearProgress />
