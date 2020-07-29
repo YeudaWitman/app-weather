@@ -8,5 +8,5 @@ during the development we use mock data, due to API limited to 50 requests per d
 - [ ] complete favorites feature.
 - [ ] Add Celsius/Fahrenheit toggle button.
 - [X] Add dark/light theme support.
-- [ ] allow data from "http://dataservice.accuweather.com".
-
+- [ ] allow data from "https://developer.accuweather.com/apis".
+- [ ] responsive problem with header of main weather card.
