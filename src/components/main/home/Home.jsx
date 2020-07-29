@@ -23,6 +23,7 @@ const Home = ({ match }) => {
 
   useEffect(() => {
     const fetchCurrentWeather = () => {
+      console.log('gg');
       dispatch(actions.fetchDataPending());
       axios.get(CURRENT_DEVELOP_API)
         .then((response) => {
@@ -34,9 +35,7 @@ const Home = ({ match }) => {
     }
 
     fetchCurrentWeather();
-  }, [city]);
-
-
+  }, [dispatch]);
 
   if (currentCity.pending) {
     return (

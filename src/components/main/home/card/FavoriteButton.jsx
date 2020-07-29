@@ -8,10 +8,7 @@ import * as actions from '../../../../redux/actions';
 const FavoriteButton = ({ city }) => {
 
   const dispatch = useDispatch();
-  const favList = useSelector(state => state.favorites);
-
-  const isFavorite = favList.find(favCity => favCity.key === city.key);
-
+  const isFavorite = useSelector(state => state.favorites.find(favCity => favCity.key === city.key));
   const handleAddToFavorites = () => {
     let tmp = [];
     if (localStorage.getItem(FAVORITES)) {
@@ -25,7 +22,16 @@ const FavoriteButton = ({ city }) => {
   }
 
   const handleRemoveFromFavorites = () => {
-    console.log(city);
+    let tmp = [];
+    if (localStorage.getItem(FAVORITES)) {
+      tmp = JSON.parse(localStorage.getItem(FAVORITES));
+    }
+    const index = tmp.map(e => e.key).indexOf(city.key);
+    if (index > -1) {
+      tmp.splice(index, 1);
+    }
+    dispatch(actions.removeFromFavorites(tmp));
+    localStorage.setItem(FAVORITES, JSON.stringify(tmp));
   }
 
   const opt = {
