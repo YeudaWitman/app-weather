@@ -1,24 +1,26 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Button, Icon } from '@material-ui/core';
-import { FAVORITES } from '../../../../common';
+import { Box, Button, Icon, IconButton } from '@material-ui/core';
 
+import WeatherToast from '../../../../common/WeatherToast.jsx';
+import { FAVORITES } from '../../../../common';
 import * as actions from '../../../../redux/actions';
 
 const FavoriteButton = ({ city }) => {
 
   const dispatch = useDispatch();
   const isFavorite = useSelector(state => state.favorites.find(favCity => favCity.key === city.key));
+  const toast = useSelector(state => state.toast);
+
   const handleAddToFavorites = () => {
     let tmp = [];
     if (localStorage.getItem(FAVORITES)) {
       tmp = JSON.parse(localStorage.getItem(FAVORITES));
     }
-    console.log(tmp);
     tmp.push(city);
-    console.log(tmp);
     dispatch(actions.addToFavorites(tmp));
     localStorage.setItem(FAVORITES, JSON.stringify(tmp));
+    dispatch(actions.openToast(`${city.name} added to favorites`));
   }
 
   const handleRemoveFromFavorites = () => {
@@ -32,9 +34,17 @@ const FavoriteButton = ({ city }) => {
     }
     dispatch(actions.removeFromFavorites(tmp));
     localStorage.setItem(FAVORITES, JSON.stringify(tmp));
+    dispatch(actions.openToast(`${city.name} removed from favorites`));
   }
 
-  const opt = {
+  const handleCloseToast = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    dispatch(actions.closeToast());
+  };
+
+  const option = {
     add: {
       color: 'inherit',
       icon: 'favorite_border',
@@ -53,8 +63,18 @@ const FavoriteButton = ({ city }) => {
 
   return (
     <Box display="flex" padding={2}>
-      <Icon fontSize="large" color={opt[fav].color}>{opt[fav].icon}</Icon>
-      <Button color="inherit" onClick={opt[fav].handle}>{opt[fav].text}</Button>
+      <Box display={{ xs: 'none', sm: 'block' }}>
+        <Box display="inline" pt={2}>
+          <Icon fontSize="large" color={option[fav].color}>{option[fav].icon}</Icon>
+        </Box>
+        <Button color="inherit" onClick={option[fav].handle}>{option[fav].text}</Button>
+      </Box>
+      <Box display={{ xs: 'block', sm: 'none' }}>
+        <IconButton onClick={option[fav].handle} color={option[fav].color}>
+          <Icon fontSize="large" color={option[fav].color}>{option[fav].icon}</Icon>
+        </IconButton>
+      </Box>
+      <WeatherToast handleClose={handleCloseToast} toast={toast} />
     </Box>
   );
 }
