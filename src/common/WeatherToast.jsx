@@ -5,19 +5,19 @@ const WeatherToast = (props) => {
   const { handleClose, toast } = props;
   return (
     <Snackbar
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'center',
-    }}
-    open={toast.open}
-    autoHideDuration={6000}
-    onClose={handleClose}
-    message={toast.msg}
-    action={
-      <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
-        <Icon fontSize="small" >close</Icon>
-      </IconButton>
-    }
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'center',
+      }}
+      open={toast.open}
+      autoHideDuration={4000}
+      onClose={handleClose}
+      message={toast.msg}
+      action={
+        <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+          <Icon fontSize="small" >close</Icon>
+        </IconButton>
+      }
     />
   )
 }
