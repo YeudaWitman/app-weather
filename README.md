@@ -5,8 +5,11 @@ during the development we use mock data, due to API limited to 50 requests per d
 
 ### Known todos:
 - [ ] fix state mangement issues.
-- [ ] complete favorites feature.
+- [x] complete favorites feature.
+  - [x] toast indicator
 - [ ] Add Celsius/Fahrenheit toggle button.
 - [X] Add dark/light theme support.
 - [ ] allow data from "https://developer.accuweather.com/apis".
 - [ ] responsive problem with header of main weather card.
+- [ ] error handling.
+- [ ] icon avatat indicate day/night time.
