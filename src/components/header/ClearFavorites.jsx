@@ -11,9 +11,11 @@ const ClearFavorites = () => {
   const toast = useSelector(state => state.toast);
 
   const handleClear = () => {
-    if(localStorage.getItem(FAVORITES)) {
+    if (localStorage.getItem(FAVORITES)) {
       localStorage.removeItem(FAVORITES);
       dispatch(actions.openToast('favorites deleted!'));
+      dispatch(actions.removeFromFavorites([]));
+      return;
     }
     dispatch(actions.openToast('There no stored favorites'));
   }
@@ -29,11 +31,11 @@ const ClearFavorites = () => {
     <MenuItem>
       <FormControlLabel
         control={
-          <IconButton 
+          <IconButton
             variant="contained"
             onClick={handleClear}
             name="clear-favorites"
-            ><Icon color="secondary">delete</Icon></IconButton>
+          ><Icon color="secondary">delete</Icon></IconButton>
         }
         label="Clear favorites"
       />

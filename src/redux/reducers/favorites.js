@@ -5,7 +5,6 @@ const favorites = (state = [], action) => {
         case types.ADD_TO_FAVORITES:
             return action.payload;
         case types.REMOVE_FROM_FAVORITES:
-            console.log('action: ', action);
             return action.payload;
         default:
             return state;

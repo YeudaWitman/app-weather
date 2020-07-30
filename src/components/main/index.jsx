@@ -3,9 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 
 import Home from './home/Home.jsx';
-import Favorites from './favorites/Favorites.jsx';
+import Favorites from './favorites';
 import NotFound from './NotFound.jsx';
-import SearchField from './home/searchField/SearchField.jsx';
+import SearchField from './home/searchField';
 
 
 const Main = () => {

@@ -7,7 +7,7 @@ import * as actions from './redux/actions';
 import { DARK_MODE, FAVORITES } from './common'
 
 import HeaderBar from './components/header/HeaderBar.jsx';
-import Main from './components/main/Main.jsx';
+import Main from './components/main';
 import Theme from './components/Theme.jsx';
 
 const App = () => {

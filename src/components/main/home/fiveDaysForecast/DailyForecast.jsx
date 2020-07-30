@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DailyForecast = ({daily}) => {
+  const metric = true;
   const classes = useStyles();
   const celsiusSymbol = '℃';
   const day = moment.unix(daily.EpochDate);

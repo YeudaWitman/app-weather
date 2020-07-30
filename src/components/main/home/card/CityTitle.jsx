@@ -1,19 +1,18 @@
 import React from 'react'
 
-import { Typography } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
 
-const CityTitle = props => {
+const CityTitle = ({ title }) => {
 
-  const {title} = props;
   return (
-    <>
-      <Typography variant="h4" component="span">
+    <Box >
+      <Typography variant="h5" component="span">
         {title.name},{' '}
       </Typography>
       <Typography variant="subtitle1" component="span" >
         {title.country}
       </Typography>
-    </>
+    </Box>
   )
 }
 

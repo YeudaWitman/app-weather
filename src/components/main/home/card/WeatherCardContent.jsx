@@ -1,9 +1,9 @@
 import React from 'react';
-import { Grid, CardContent,  Typography} from '@material-ui/core';
+import { Grid, CardContent, Typography } from '@material-ui/core';
 
-import FiveDaysForecast from './fiveDaysForecast/FiveDaysForecast.jsx';
+import FiveDaysForecast from '../fiveDaysForecast';
 
-const WeatherCardContent = ({title}) => {
+const WeatherCardContent = ({ title, city }) => {
   return (
     <CardContent>
       <Grid container justify="center" alignItems="center" spacing={1}>
@@ -12,7 +12,7 @@ const WeatherCardContent = ({title}) => {
             {title}
           </Typography>
         </Grid>
-        <FiveDaysForecast />
+        <FiveDaysForecast city={city} />
       </Grid>
     </CardContent>
   )

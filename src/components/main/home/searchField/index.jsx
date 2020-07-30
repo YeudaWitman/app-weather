@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../../../redux/actions';
 import { LinearProgress, Grid, Popper, InputBase, Icon, List } from '@material-ui/core';
 
 import SuggestionsList from './SuggestionsList.jsx';
-import useStyles from './style';
+import * as actions from '../../../../redux/actions';
+import useStyles from '../../../../common/style';
 
 const AUTOCOMPLETE_API = 'https://my-json-server.typicode.com/YeudaWitman/autoCompleteMock/data';
 
@@ -30,12 +30,12 @@ const SearchField = () => {
     }
     dispatch(actions.suggestionPending());
     axios.get(AUTOCOMPLETE_API)
-    .then((response) => {
-      dispatch(actions.suggestionSuccess(response.data));
-    })
-    .catch((error) => {
-      dispatch(actions.suggestionError(error));
-    })
+      .then((response) => {
+        dispatch(actions.suggestionSuccess(response.data));
+      })
+      .catch((error) => {
+        dispatch(actions.suggestionError(error));
+      })
   }
 
   const handleCloseList = (city) => {
@@ -68,8 +68,8 @@ const SearchField = () => {
       </div>
       <Popper open={open} anchorEl={anchorEl}>
         <List className={classes.list} component="nav" aria-label="suggestions">
-          {pending ? <LinearProgress color="secondary"/> :
-          <SuggestionsList handleClose={handleCloseList} list={suggestions} />
+          {pending ? <LinearProgress color="secondary" /> :
+            <SuggestionsList handleClose={handleCloseList} list={suggestions} />
           }
         </List>
       </Popper>

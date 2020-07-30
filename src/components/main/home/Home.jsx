@@ -23,7 +23,6 @@ const Home = ({ match }) => {
 
   useEffect(() => {
     const fetchCurrentWeather = () => {
-      console.log('gg');
       dispatch(actions.fetchDataPending());
       axios.get(CURRENT_DEVELOP_API)
         .then((response) => {
@@ -46,11 +45,11 @@ const Home = ({ match }) => {
       <Container>
         <Card>
           <WeatherCardHeader data={data} city={city} />
-          <WeatherCardContent title={city.WeatherText} />
+          <WeatherCardContent city={city} title={city.WeatherText} />
           <CardActions>
             <Grid container justify="center" alignItems="center" item xs={12}>
               <Typography variant="subtitle1" color="textSecondary">
-                Last update: {lastUpdate} [{cityKey}]{city.key}
+                Last update: {moment(data.EpochTime).format("ddd, h:mA")}
               </Typography>
             </Grid>
           </CardActions>
