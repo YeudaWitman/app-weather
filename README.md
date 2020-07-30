@@ -1,6 +1,8 @@
 ## Weather app
-a simple, responsive, web app that shows the weather of some city
+a simple, responsive, web app that shows the weather of some city.
+
 the data pulled from **accuweather.com** API service.
+
 during the development we use mock data, due to API limited to 50 requests per day.
 
 ### Known todos:
