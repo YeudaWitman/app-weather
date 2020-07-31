@@ -4,10 +4,10 @@ import { useDispatch } from 'react-redux';
 import * as actions from '../../../redux/actions';
 import { Grid, Typography, Paper, Button } from '@material-ui/core';
 
-import useStyles from './style';
+import { favStyles } from '../../../common/style';
 
 const FavoriteItem = ({ data }) => {
-  const classes = useStyles();
+  const classes = favStyles();
   const dispatch = useDispatch();
 
   const handleSelectCity = () => {

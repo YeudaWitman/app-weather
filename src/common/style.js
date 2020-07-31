@@ -2,26 +2,27 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 
 const FONT_SIZE = '1.5em';
 
-const useStyles = makeStyles((theme) => ({
-  favorites: {
-    paper: {
-      padding: theme.spacing(3, 1, 1, 1),
-      margin: theme.spacing(2, 0),
-      height: '100%',
-      textAlign: 'center',
-      background: '#274754'
-    },
-    innerPaper: {
-      margin: theme.spacing(2, 0),
-      padding: theme.spacing(3, 0, 4, 0),
-      textAlign: 'center',
-      background: '#2D5362'
-    },
-    button: {
-      margin: theme.spacing(3, 0, 0, 0),
-      width: '100%',
-    }
+export const favStyles = makeStyles((theme) => ({
+  paper: {
+    padding: theme.spacing(3, 1, 1, 1),
+    margin: theme.spacing(2, 0),
+    height: '100%',
+    textAlign: 'center',
+    background: '#274754'
   },
+  innerPaper: {
+    margin: theme.spacing(2, 0),
+    padding: theme.spacing(3, 0, 4, 0),
+    textAlign: 'center',
+    background: '#2D5362'
+  },
+  button: {
+    margin: theme.spacing(3, 0, 0, 0),
+    width: '100%',
+  }
+}));
+
+export const searchStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -68,5 +69,3 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#001f2a'
   }
 }));
-
-export default useStyles;

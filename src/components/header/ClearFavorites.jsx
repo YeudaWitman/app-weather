@@ -5,6 +5,7 @@ import { FormControlLabel, MenuItem, IconButton, Icon } from '@material-ui/core'
 import * as actions from '../../redux/actions';
 import WeatherToast from '../../common/WeatherToast';
 import { FAVORITES } from '../../common';
+import { handleCloseToast } from '../../sevices';
 
 const ClearFavorites = () => {
   const dispatch = useDispatch();
@@ -20,13 +21,6 @@ const ClearFavorites = () => {
     dispatch(actions.openToast('There no stored favorites'));
   }
 
-  const handleCloseToast = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    dispatch(actions.closeToast());
-  };
-
   return (
     <MenuItem>
       <FormControlLabel
@@ -39,9 +33,8 @@ const ClearFavorites = () => {
         }
         label="Clear favorites"
       />
-      <WeatherToast handleClose={handleCloseToast} toast={toast} />
+      <WeatherToast handleClose={() => handleCloseToast(dispatch)} toast={toast} />
     </MenuItem>
-
   )
 }
 

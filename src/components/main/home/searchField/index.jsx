@@ -5,15 +5,13 @@ import { LinearProgress, Grid, Popper, InputBase, Icon, List } from '@material-u
 
 import SuggestionsList from './SuggestionsList.jsx';
 import * as actions from '../../../../redux/actions';
-import useStyles from '../../../../common/style';
-
-const AUTOCOMPLETE_API = 'https://my-json-server.typicode.com/YeudaWitman/autoCompleteMock/data';
-
+import { searchStyles } from '../../../../common/style';
+import { fetchData } from '../../../../sevices/fetchData'
 const SearchField = () => {
-  const classes = useStyles();
+  const classes = searchStyles();
   const dispatch = useDispatch();
 
-  let { pending, suggestions } = useSelector(state => state.suggestion);
+  let { pending, suggestions, error } = useSelector(state => state.suggestion);
   let { query } = useSelector(state => state.search);
   let anchorEl = useSelector(state => state.suggestionMenu.anchorEl);
 
@@ -28,14 +26,7 @@ const SearchField = () => {
       dispatch(actions.closeSuggestionMenu(null));
       return;
     }
-    dispatch(actions.suggestionPending());
-    axios.get(AUTOCOMPLETE_API)
-      .then((response) => {
-        dispatch(actions.suggestionSuccess(response.data));
-      })
-      .catch((error) => {
-        dispatch(actions.suggestionError(error));
-      })
+    fetchData.suggestions(dispatch);
   }
 
   const handleCloseList = (city) => {
@@ -67,11 +58,9 @@ const SearchField = () => {
         />
       </div>
       <Popper open={open} anchorEl={anchorEl}>
-        <List className={classes.list} component="nav" aria-label="suggestions">
-          {pending ? <LinearProgress color="secondary" /> :
-            <SuggestionsList handleClose={handleCloseList} list={suggestions} />
-          }
-        </List>
+        {pending ? <LinearProgress color="secondary" /> :
+          <SuggestionsList handleClose={handleCloseList} data={suggestions} error={error} />
+        }
       </Popper>
     </Grid>
   )

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Box, Typography } from '@material-ui/core';
 
 import FavoriteItem from './FavoriteItem.jsx';
 import * as actions from '../../../redux/actions';
@@ -18,16 +18,20 @@ const Favorites = () => {
         dispatch(actions.addToFavorites(favorites));
       }
     }
-
     checkLocalStorage();
   }, [dispatch]);
 
   return (
     <Grid container justify="center" alignItems="center" spacing={1}>
       <Grid container justify="center" alignItems="center" item xs={12}>
-        <Typography variant="h4" color="secondary">
-          Favorites
-        </Typography>
+        {(favorites.length < 1) ?
+          <Box>
+            <Typography variant="h3" align="center">No Favorites Cities Yet</Typography>
+            <Typography variant="h6" align="center">Cities you mark as favorite are shown here</Typography>
+          </Box>
+          :
+          <Typography variant="h4" align="center">Your Favorites cities</Typography>
+        }
       </Grid>
       {favorites.map(item => <FavoriteItem key={item.key} data={item} />)}
     </Grid>

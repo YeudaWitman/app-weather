@@ -3,6 +3,7 @@ import { Menu, MenuItem } from '@material-ui/core';
 
 import ClearFavorites from './ClearFavorites.jsx';
 import DarkMode from './DarkMode.jsx';
+import SetScaleMethod from './SetScaleMethod.jsx';
 
 const SettingsMenu = props => {
   const transObj = {
@@ -18,7 +19,7 @@ const SettingsMenu = props => {
       transformOrigin={transObj}
       open={props.open}
       onClose={props.handleClose}
-      >
+    >
       <MenuItem disabled>
         Settings
       </MenuItem>
@@ -26,6 +27,7 @@ const SettingsMenu = props => {
         <DarkMode />
       </MenuItem>
       <ClearFavorites />
+      <SetScaleMethod />
     </Menu>
   )
 }

@@ -47,9 +47,9 @@ const HeaderBar = () => {
             <Button component={NavLink} to={'/favorites'} color="inherit">Favorites</Button>
           </Tooltip>
           <Tooltip title="Settings" interactive arrow>
-            <IconButton aria-label="delete" color="inherit" onClick={handleMenu}><Icon>settings</Icon></IconButton>
+            <IconButton aria-label="settings" color="inherit" onClick={handleMenu}><Icon>settings</Icon></IconButton>
           </Tooltip>
-          
+
           <SettingsMenu anchorEl={anchorEl} open={open} handleClose={handleClose} />
         </Toolbar>
       </AppBar>
