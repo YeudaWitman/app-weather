@@ -5,7 +5,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const CURRENT_DEVELOP_API = 'https://my-json-server.typicode.com/YeudaWitman/currentCondition/data';
 const FIVE_DEVELOP_API = 'https://my-json-server.typicode.com/YeudaWitman/fiveDays/DailyForecasts';
-const AUTOCOMPLETE_API = 'https://my-json-server.typicode.com/YeudaWitman/autoCompleteMock/datas';
+const AUTOCOMPLETE_API = 'https://my-json-server.typicode.com/YeudaWitman/autoCompleteMock/data';
 
 const currentWeather = (dispatch, cityKey) => {
   const CURRENT_CONDITION_API = `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}`;

@@ -10,7 +10,8 @@ const SuggestionsList = ({ handleClose, data, error }) => {
   console.log(data)
   return (
     <List className={classes.list} component="nav" aria-label="suggestions">
-      {error ? <ListItem><Typography variant="inherit" color="error">Oops! Something went wrong.</Typography></ListItem> :
+      {error ? <ListItem><Typography variant="inherit" color="error">Oops! Something went wrong.</Typography></ListItem> : ''}
+      {(data.length < 1) ? <ListItem><Typography variant="inherit">There are no results that match your search.</Typography></ListItem> :
         data.map((city) => {
           return (<SuggestionsListItem
             key={city.Key}
