@@ -1,7 +1,7 @@
 import * as actions from '../redux/actions';
 import { DARK_MODE, FAVORITES } from '../common'
 
-export const checkLocalStorage = (dispatch) => {
+/* export const checkLocalStorage = (dispatch) => {
   if (localStorage.getItem(DARK_MODE)) {
     let darkMode = JSON.parse(localStorage.getItem(DARK_MODE));
     dispatch(actions.darkMode(darkMode));
@@ -9,6 +9,21 @@ export const checkLocalStorage = (dispatch) => {
   if (localStorage.getItem(FAVORITES)) {
     let favorites = JSON.parse(localStorage.getItem(FAVORITES));
     dispatch(actions.addToFavorites(favorites));
+  }
+} */
+
+export const checkLocalStorage = {
+  darkMode: (dispatch) => {
+    if (localStorage.getItem(DARK_MODE)) {
+      let darkMode = JSON.parse(localStorage.getItem(DARK_MODE));
+      dispatch(actions.darkMode(darkMode));
+    }
+  },
+  favorites: (dispatch) => {
+    if (localStorage.getItem(FAVORITES)) {
+      let favorites = JSON.parse(localStorage.getItem(FAVORITES));
+      dispatch(actions.addToFavorites(favorites));
+    }
   }
 }
 

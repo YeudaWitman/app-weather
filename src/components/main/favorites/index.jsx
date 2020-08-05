@@ -19,7 +19,7 @@ const Favorites = () => {
       }
     }
     checkLocalStorage();
-  }, [dispatch]);
+  }, [dispatch, favorites]);
 
   return (
     <Grid container justify="center" alignItems="center" spacing={1}>

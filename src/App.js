@@ -15,8 +15,8 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    checkLocalStorage(dispatch);
-  }, [isDarkMode, dispatch]);
+    checkLocalStorage.darkMode(dispatch);
+  }, [dispatch, isDarkMode]);
 
   return (
     <BrowserRouter >

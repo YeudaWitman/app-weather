@@ -46,9 +46,6 @@ export const searchStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  inputRoot: {
-    color: 'inherit',
-  },
   inputInput: {
     padding: theme.spacing(3, 1, 3, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,

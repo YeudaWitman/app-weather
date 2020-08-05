@@ -1,12 +1,13 @@
 import React from 'react';
-import axios from 'axios';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { LinearProgress, Grid, Popper, InputBase, Icon, List } from '@material-ui/core';
+import { LinearProgress, Grid, Popper, InputBase, Icon } from '@material-ui/core';
 
 import SuggestionsList from './SuggestionsList.jsx';
 import * as actions from '../../../../redux/actions';
 import { searchStyles } from '../../../../common/style';
-import { fetchData } from '../../../../sevices/fetchData'
+import { fetchData } from '../../../../sevices/fetchData';
+
 const SearchField = () => {
   const classes = searchStyles();
   const dispatch = useDispatch();

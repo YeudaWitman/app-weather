@@ -21,11 +21,11 @@ const DarkMode = () => {
       <FormControlLabel
         control={
           <Switch
-          checked={isDarkMode}
+            checked={isDarkMode}
             onChange={(e) => handleDarkMode(e)}
             color="secondary"
             name="dark-mode"
-            />}
+          />}
         label="Dark Mode"
       />
       <DarkModeIcon dark={isDarkMode} />
@@ -33,10 +33,10 @@ const DarkMode = () => {
   )
 }
 
-const DarkModeIcon = ({dark}) => {
+const DarkModeIcon = ({ dark }) => {
   return dark
-  ? <Icon color="secondary">brightness_3</Icon>
-  : <Icon color="primary">brightness_5</Icon>
+    ? <Icon color="secondary">brightness_3</Icon>
+    : <Icon color="primary">brightness_5</Icon>
 };
 
 export default DarkMode;
