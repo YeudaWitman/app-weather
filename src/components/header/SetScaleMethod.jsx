@@ -4,7 +4,7 @@ import WeatherToast from '../../common/WeatherToast';
 
 const SetScaleMethod = () => {
   return (
-    <MenuItem>
+    <MenuItem disabled>
       <Tooltip title="experimental" interactive >
         <FormControlLabel
           control={
