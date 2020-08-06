@@ -10,6 +10,10 @@ import WeatherCardHeader from './card/WeatherCardHeader.jsx';
 import WeatherCardFooter from './card/WeatherCardFooter.jsx';
 import ErrorMassage from '../ErrorMassage.jsx';
 
+const changeAppTitle = (name) => {
+  document.title = `Wheather in ${name}`;
+}
+
 const Home = ({ match }) => {
   const { currentCity } = useSelector(state => state);
   const data = currentCity.data[0];
@@ -21,7 +25,9 @@ const Home = ({ match }) => {
 
   useEffect(() => {
     fetchData.currentWeather(dispatch, cityKey);
-  }, [dispatch, cityKey]);
+    changeAppTitle(city.name);
+  }, [dispatch, cityKey, city]);
+
 
   if (currentCity.pending) {
     return <LinearProgress />;

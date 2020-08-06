@@ -15,6 +15,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('ff')
     checkLocalStorage.darkMode(dispatch);
   }, [dispatch, isDarkMode]);
 
