@@ -7,7 +7,6 @@ import { searchStyles } from '../../../../common/style';
 const SuggestionsList = ({ handleClose, data, error }) => {
   const classes = searchStyles();
 
-  console.log(data)
   return (
     <List className={classes.list} component="nav" aria-label="suggestions">
       {error ? <ListItem><Typography variant="inherit" color="error">Oops! Something went wrong.</Typography></ListItem> : ''}

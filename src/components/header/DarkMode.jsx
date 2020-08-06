@@ -5,7 +5,7 @@ import { Switch, FormControlLabel, Icon } from '@material-ui/core';
 import { DARK_MODE } from '../../common';
 import * as actions from '../../redux/actions';
 
-const DarkMode = () => {
+const DarkMode = ({ handleClose }) => {
 
   const dispatch = useDispatch();
   const isDarkMode = useSelector(state => state.darkMode);
@@ -14,6 +14,7 @@ const DarkMode = () => {
     let checked = e.target.checked;
     dispatch(actions.darkMode(checked));
     localStorage.setItem(DARK_MODE, checked);
+    handleClose();
   }
 
   return (

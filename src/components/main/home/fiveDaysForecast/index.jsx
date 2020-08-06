@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CircularProgress } from '@material-ui/core';
 
-import { fetchData } from '../../../../sevices/fetchData'
+import { fetchData } from '../../../../services/fetchData'
 import DailyForecast from './DailyForecast.jsx';
 import ErrorMassage from '../../ErrorMassage.jsx';
 

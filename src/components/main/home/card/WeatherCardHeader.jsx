@@ -26,7 +26,6 @@ const WeatherCardHeader = ({ data, city }) => {
 
   const classes = useStyles();
   const symbols = { Metric: '℃', Imperial: '°F' };
-  console.log(WeatherIcon);
   return (
     <CardHeader
       avatar={<Avatar alt={city.name} src="" className={classes.large}>

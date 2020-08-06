@@ -1,14 +1,21 @@
 import React from 'react';
-import { Menu, MenuItem } from '@material-ui/core';
+import { Menu, MenuItem, Collapse } from '@material-ui/core';
 
 import ClearFavorites from './ClearFavorites.jsx';
 import DarkMode from './DarkMode.jsx';
 import SetScaleMethod from './SetScaleMethod.jsx';
+import ScaleMenu from './ScaleSwitch.jsx';
 
 const SettingsMenu = props => {
   const transObj = {
     vertical: 'top',
     horizontal: 'right',
+  };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpenScaleMenu = () => {
+    setOpen(!open);
   };
 
   return (
@@ -24,10 +31,14 @@ const SettingsMenu = props => {
         Settings
       </MenuItem>
       <MenuItem>
-        <DarkMode />
+        <DarkMode handleClose={props.handleClose} />
       </MenuItem>
-      <ClearFavorites />
-      <SetScaleMethod />
+      <ClearFavorites handleClose={props.handleClose} />
+
+      <SetScaleMethod handleClick={handleOpenScaleMenu} handleClose={props.handleClose} />
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <ScaleMenu handleClose={props.handleClose} />
+      </Collapse>
     </Menu>
   )
 }

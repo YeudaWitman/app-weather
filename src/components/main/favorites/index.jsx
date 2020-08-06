@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Box, Typography } from '@material-ui/core';
 
 import FavoriteItem from './FavoriteItem.jsx';
-import * as actions from '../../../redux/actions';
-import { FAVORITES } from '../../../common';
+
+import { checkLocalStorage } from '../../../services/manageLocalStrage';
 
 const Favorites = () => {
 
@@ -12,14 +12,8 @@ const Favorites = () => {
   const favorites = useSelector(state => state.favorites);
 
   useEffect(() => {
-    const checkLocalStorage = () => {
-      if (localStorage.getItem(FAVORITES)) {
-        let favorites = JSON.parse(localStorage.getItem(FAVORITES));
-        dispatch(actions.addToFavorites(favorites));
-      }
-    }
-    checkLocalStorage();
-  }, [dispatch, favorites]);
+    checkLocalStorage.favorites(dispatch);
+  }, [dispatch]);
 
   return (
     <Grid container justify="center" alignItems="center" spacing={1}>

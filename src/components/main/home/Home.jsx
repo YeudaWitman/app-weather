@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinearProgress, Card, Container } from '@material-ui/core';
 
-import { fetchData } from '../../../sevices/fetchData';
+import { fetchData } from '../../../services/fetchData';
 
 import WeatherCardContent from './card/WeatherCardContent.jsx';
 import WeatherCardHeader from './card/WeatherCardHeader.jsx';

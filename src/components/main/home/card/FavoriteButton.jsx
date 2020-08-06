@@ -4,7 +4,7 @@ import { Box, Tooltip, Icon, IconButton } from '@material-ui/core';
 
 import WeatherToast from '../../../../common/WeatherToast.jsx';
 import * as actions from '../../../../redux/actions';
-import { favorites } from '../../../../sevices/manageLocalStrage'
+import { favorites } from '../../../../services/manageLocalStrage'
 
 const FavoriteButton = ({ city }) => {
 
