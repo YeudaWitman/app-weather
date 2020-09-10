@@ -1,6 +1,8 @@
 ## Weather app
 a simple, responsive, web app that shows the weather of some city.
 
+https://yeudawitman.github.io/app-weather/
+
 the data pulled from **accuweather.com** API service.
 
 *during the development we use mock data, due the API limit of 50 requests per day.*
